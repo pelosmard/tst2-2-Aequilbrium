@@ -17,14 +17,14 @@
         </mat-grid-tile>
         <mat-grid-tile>
             <div class="dragdrop-wrapper decepticonscr" cdkDropList #doneList2="cdkDropList" [cdkDropListData]="transferreddecepticons" [cdkDropListConnectedTo]="[fulldecepticonsList]" (cdkDropListDropped)="dropItem($event)" cdkDragBoundary=".decepticons1">
-                <h2>Decepticons</h2>
+                <h2>Selected Decepticons</h2>
                 <div class="dragdrop-inner" *ngFor="let decepticonssel of transferreddecepticons" cdkDrag>{{decepticonssel.name}}</div>
             </div>
         </mat-grid-tile>
         <mat-grid-tile>
             <!-- <div class="dragdrop-wrapper" cdkDropList #fulldecepticonsList="cdkDropList" [cdkDropListData]="decepticon.name" [cdkDropListConnectedTo]="[doneList2]" (cdkDropListDropped)="dropItem($event)"> -->
             <div class="dragdrop-wrapper decepticons1" cdkDropList #fulldecepticonsList="cdkDropList" [cdkDropListData]="decepticons" [cdkDropListConnectedTo]="doneList2" (cdkDropListDropped)="dropItem($event)" cdkDragBoundary=".decepticonscr">
-                <h2>Selected Decepticons</h2>
+                <h2>Decepticons</h2>
                 <div class="dragdrop-inner" *ngFor="let decepticon of decepticons" cdkDrag>{{decepticon.name}}</div>
             </div>
         </mat-grid-tile>
