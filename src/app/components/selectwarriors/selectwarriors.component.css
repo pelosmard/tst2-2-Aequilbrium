@@ -1,0 +1,155 @@
+.dragdrop-wrapper {
+    width: 450px;
+    max-width: 100%;
+    border: solid 1px #eee;
+    /* min-height: 65px; */
+    min-height: 165px;
+    display: block;
+    background: white;
+    border-radius: 3px;
+    /* overflow: hidden; */
+    overflow: auto;
+    background-color: #ffffff;
+    /* margin: 20px auto; */
+    margin: 20px auto;
+    height: inherit;
+}
+
+.dragdrop-inner {
+    padding: 22px 12px;
+    color: rgba(0, 0, 0, 0.87);
+    border-bottom: solid 1px #eee;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: move;
+    background: rgb(126, 217, 231);
+    font-size: 14px;
+}
+
+.cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+    opacity: 0;
+}
+
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.dragdrop-inner:last-child {
+    border: blue;
+    /* none;*/
+}
+
+.dragdrop-wrapper.cdk-drop-list-dragging .dragdrop-inner:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.fill-card {
+    max-width: 400px;
+    height: 20px;
+}
+
+mat-grid-list {
+    height: auto;
+    /*max-content;*/
+}
+
+
+/*
+mat-grid-tile {
+    background: lightblue;
+}
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Float four columns side by side */
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 0 10px;
+}
+
+
+/* Remove extra left and right margins, due to padding */
+
+.row {
+    margin: 0 -5px;
+}
+
+
+/* Clear floats after the columns */
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* Responsive columns */
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+
+/* Style the counter cards */
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+}
+
+#butwar {
+    /* justify-content: center; */
+    margin: 0 auto;
+}
+
+#divbut1 {
+    justify-content: center;
+}
+
+.mat-drawer-content {
+    overflow: inherit;
+}
+
+#table1,
+#table2 {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}

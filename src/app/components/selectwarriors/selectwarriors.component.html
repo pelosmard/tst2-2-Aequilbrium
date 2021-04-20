@@ -1,0 +1,135 @@
+<mat-card class="fill-card">
+</mat-card>
+<mat-card>
+    <mat-grid-list cols="4">
+        <mat-grid-tile>
+            <!-- <div class="dragdrop-wrapper autobotscl" cdkDropList #fullautobotsList="cdkDropList" [cdkDropListData]="Autobots.name" [cdkDropListConnectedTo]="[doneList1]" (cdkDropListDropped)="dropItem($event)" cdkDragBoundary=".autobotscr"> -->
+            <div class="dragdrop-wrapper autobotscl" cdkDropList #fullautobotsList="cdkDropList" [cdkDropListData]="autobots" [cdkDropListConnectedTo]="doneList1" (cdkDropListDropped)="dropItem($event)" cdkDragBoundary=".autobotscr">
+                <h2>Autobots</h2>
+                <div class="dragdrop-inner" *ngFor="let autobot of autobots" cdkDrag>{{autobot.name}}</div>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="dragdrop-wrapper autobotscr" cdkDropList #doneList1="cdkDropList" [cdkDropListData]="transferredautobots" [cdkDropListConnectedTo]="[fullautobotsList]" (cdkDropListDropped)="dropItem($event)" cdkDragBoundary=".autobotscl">
+                <h2>Selected Autobots</h2>
+                <div class="dragdrop-inner" *ngFor="let autobotssel of transferredautobots" cdkDrag>{{autobotssel.name}}</div>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="dragdrop-wrapper decepticonscr" cdkDropList #doneList2="cdkDropList" [cdkDropListData]="transferreddecepticons" [cdkDropListConnectedTo]="[fulldecepticonsList]" (cdkDropListDropped)="dropItem($event)" cdkDragBoundary=".decepticons1">
+                <h2>Decepticons</h2>
+                <div class="dragdrop-inner" *ngFor="let decepticonssel of transferreddecepticons" cdkDrag>{{decepticonssel.name}}</div>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <!-- <div class="dragdrop-wrapper" cdkDropList #fulldecepticonsList="cdkDropList" [cdkDropListData]="decepticon.name" [cdkDropListConnectedTo]="[doneList2]" (cdkDropListDropped)="dropItem($event)"> -->
+            <div class="dragdrop-wrapper decepticons1" cdkDropList #fulldecepticonsList="cdkDropList" [cdkDropListData]="decepticons" [cdkDropListConnectedTo]="doneList2" (cdkDropListDropped)="dropItem($event)" cdkDragBoundary=".decepticonscr">
+                <h2>Selected Decepticons</h2>
+                <div class="dragdrop-inner" *ngFor="let decepticon of decepticons" cdkDrag>{{decepticon.name}}</div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</mat-card>
+<div id="divbut1">
+    <h3>Push this button, as soon as you have finished of selecting the contestants</h3>
+    <button mat-raised-button color="accent" (click)="traverseTransAuto()" id="butwar">To the War!</button>
+</div>
+<div *ngIf="isTransferredVisible">
+    <h2>The characteristics of each competitor</h2>
+    <div class="row">
+        <div class="column">
+            <h4>Autobots</h4>
+            <div class="card">
+                <table id="table1">
+                    <thead>
+                        <tr>
+                            <th>name</th>
+                            <th>allegiance</th>
+                            <th>strength</th>
+                            <th>intelligence</th>
+                            <th>rank</th>
+                            <th>total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of playersAuto;">
+                            <td>{{item.name}}</td>
+                            <td>{{item.allegiance}}</td>
+                            <td>{{item.strength}}</td>
+                            <td>{{item.intelligence}}</td>
+                            <td>{{item.rank}}</td>
+                            <td>{{item.total}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="column">
+            <h4>Decepticons</h4>
+            <div class="card">
+                <table id="table2">
+                    <thead>
+                        <tr>
+                            <th>name</th>
+                            <th>allegiance</th>
+                            <th>strength</th>
+                            <th>intelligence</th>
+                            <th>rank</th>
+                            <th>total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item2 of playersDecept;">
+                            <td>{{item2.name}}</td>
+                            <td>{{item2.allegiance}}</td>
+                            <td>{{item2.strength}}</td>
+                            <td>{{item2.intelligence}}</td>
+                            <td>{{item2.rank}}</td>
+                            <td>{{item2.total}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <mat-card>
+        <button mat-raised-button color="warn" (click)="makeBattle()" id="butwar">Lets Battle!</button>
+    </mat-card>
+    <div *ngIf="makeVisibleResults">
+        <mat-card>
+            <h2>The results of the competition</h2>
+            <div class="row">
+                <div class="column">
+                    <div class="card">
+                        <table id="table1">
+                            <thead>
+                                <tr>
+                                    <th>Battle No.</th>
+                                    <th>Winning team</th>
+                                    <th>Autobot</th>
+                                    <th>Overall rating</th>
+                                    <th>Decepticon</th>
+                                    <th>Overall rating</th>
+                                    <th>Outcome</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of battleResult;">
+                                    <td>{{item.numbattle}}</td>
+                                    <td>{{item.winningteam}}</td>
+                                    <td>{{item.autoelement}}</td>
+                                    <td>{{item.totalA}}</td>
+                                    <td>{{item.deceptelement}}</td>
+                                    <td>{{item.totalD}}</td>
+                                    <td>{{item.outcome}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>
+<!-- </mat-card> -->
+<br><br><br>
